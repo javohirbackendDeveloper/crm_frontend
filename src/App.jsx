@@ -27,7 +27,7 @@ import GetOneStudent from "./pages/GetOneStudent";
 import GetOneGroup from "./pages/GetOneGroup";
 import GetOneTeacher from "./pages/GetOneTeacher";
 import Attendance from "./pages/Attendance";
-import Payment from "./pages/payment";
+import Payment from "./pages/Payment";
 import Market from "./pages/market";
 import GetOneProduct from "./pages/GetOneProduct";
 import Orders from "./pages/Orders";
