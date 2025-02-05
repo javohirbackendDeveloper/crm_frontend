@@ -4,7 +4,7 @@ import authStore from "../stores/auth.store";
 import { groupCrm } from "../stores/group.crm";
 import paymentCrm from "../stores/payment";
 
-function Payment() {
+function Payments() {
   const [formData, setFormData] = useState({
     student_name: "",
     group_name: "",
@@ -138,4 +138,4 @@ function Payment() {
   );
 }
 
-export default Payment;
+export default Payments;
