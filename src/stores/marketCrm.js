@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import axios from "../../lib/axios"; // axios instance
+import axios from "axios"; // axios instance
 import toast from "react-hot-toast";
 
 const useMarketStore = create((set) => ({
@@ -11,7 +11,8 @@ const useMarketStore = create((set) => ({
   createProduct: async (center_id, productData) => {
     try {
       const res = await axios.post(
-        "/product/addProduct/" + center_id,
+        "https://crm-backend-xiqj.onrender.com/api/product/addProduct/" +
+          center_id,
         productData
       );
 
@@ -29,7 +30,9 @@ const useMarketStore = create((set) => ({
 
   getAllProducts: async (center_id) => {
     try {
-      const res = await axios.get("/product/" + center_id);
+      const res = await axios.get(
+        "https://crm-backend-xiqj.onrender.com/api/product/" + center_id
+      );
       console.log(res);
 
       if (res.data) {
@@ -45,7 +48,9 @@ const useMarketStore = create((set) => ({
 
   deleteProduct: async (product_id) => {
     try {
-      const res = await axios.delete("/product/" + product_id);
+      const res = await axios.delete(
+        "https://crm-backend-xiqj.onrender.com/api/product/" + product_id
+      );
       console.log(res);
       set((prevProducts) => ({
         products: prevProducts.products.filter(
@@ -61,7 +66,10 @@ const useMarketStore = create((set) => ({
 
   updateProduct: async (product_id, newData) => {
     try {
-      const res = await axios.put("/product/" + product_id, newData);
+      const res = await axios.put(
+        "https://crm-backend-xiqj.onrender.com/api/product/" + product_id,
+        newData
+      );
       set({ products: res.data.product });
       console.log(res);
     } catch (error) {
@@ -72,10 +80,13 @@ const useMarketStore = create((set) => ({
 
   addToPurchased: async (student_id, product_id) => {
     try {
-      const res = await axios.post("/product/purchase", {
-        student_id,
-        product_id,
-      });
+      const res = await axios.post(
+        "https://crm-backend-xiqj.onrender.com/api/product/purchase",
+        {
+          student_id,
+          product_id,
+        }
+      );
       console.log(res);
 
       if (res.data?.updatedStudent) {
@@ -95,7 +106,10 @@ const useMarketStore = create((set) => ({
 
   getAllOrders: async (center_id) => {
     try {
-      const res = await axios.get("/product/getAllOrders/" + center_id);
+      const res = await axios.get(
+        "https://crm-backend-xiqj.onrender.com/api/product/getAllOrders/" +
+          center_id
+      );
 
       set({ orders: res?.data?.orders });
     } catch (error) {
@@ -106,7 +120,10 @@ const useMarketStore = create((set) => ({
 
   getOneProduct: async (product_id) => {
     try {
-      const res = await axios.get("/product/getOneProduct/" + product_id);
+      const res = await axios.get(
+        "https://crm-backend-xiqj.onrender.com/api/product/getOneProduct/" +
+          product_id
+      );
       console.log(res);
 
       set({ gettedProduct: res.data });
@@ -119,7 +136,10 @@ const useMarketStore = create((set) => ({
   deleteOrder: async (orderId) => {
     console.log(orderId);
     try {
-      const res = await axios.delete("/product/deleteOrder/" + orderId);
+      const res = await axios.delete(
+        "https://crm-backend-xiqj.onrender.com/api/product/deleteOrder/" +
+          orderId
+      );
       set((prevOrder) => ({
         orders: prevOrder.orders.filter((order) => order?._id !== orderId),
       }));
@@ -133,7 +153,8 @@ const useMarketStore = create((set) => ({
   getAllOrdersOfStudent: async (student_id) => {
     try {
       const res = await axios.get(
-        "/product/getAllOrdersOfStudent/" + student_id
+        "https://crm-backend-xiqj.onrender.com/api/product/getAllOrdersOfStudent/" +
+          student_id
       );
       console.log(res);
 

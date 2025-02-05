@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
 import { create } from "zustand";
-import axios from "../../lib/axios";
+import axios from "axios";
 
 const attendanceCrm = create((set, get) => ({
   attendance: {},
@@ -9,10 +9,13 @@ const attendanceCrm = create((set, get) => ({
     console.log(student_id, group_id);
 
     try {
-      const res = await axios.post("/attendance/saveAttendance", {
-        student_id,
-        group_id,
-      });
+      const res = await axios.post(
+        "https://crm-backend-xiqj.onrender.com/api/attendance/saveAttendance",
+        {
+          student_id,
+          group_id,
+        }
+      );
 
       if (res?.message) {
         toast.error(res?.message);
@@ -34,7 +37,7 @@ const attendanceCrm = create((set, get) => ({
   getAttendanceForGroup: async (group_id) => {
     try {
       const res = await axios.get(
-        `/attendance/getAttendanceForGroup/${group_id}`
+        `https://crm-backend-xiqj.onrender.com/api/attendance/getAttendanceForGroup/${group_id}`
       );
       const attendanceData = res.data?.attendance || {};
 

@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import axios from "../../lib/axios";
+import axios from "axios";
 import { create } from "zustand";
 
 const studentCrm = create((set, get) => ({
@@ -13,7 +13,11 @@ const studentCrm = create((set, get) => ({
 
   addGrade: async (center_id, data) => {
     try {
-      const res = await axios.post("/student/addGrade/" + center_id, data);
+      const res = await axios.post(
+        "https://crm-backend-xiqj.onrender.com/api/student/addGrade/" +
+          center_id,
+        data
+      );
       if (res.data?.student) {
         toast.success(`${data.student_grade} bahosi muvaffaqiyatli qoshildi`);
       } else {
@@ -28,7 +32,9 @@ const studentCrm = create((set, get) => ({
 
   getStudents: async (user) => {
     try {
-      const res = await axios.get("/student/" + user?._id);
+      const res = await axios.get(
+        "https://crm-backend-xiqj.onrender.com/api/student/" + user?._id
+      );
 
       set({ students: res.data?.students });
     } catch (error) {
@@ -41,7 +47,9 @@ const studentCrm = create((set, get) => ({
 
   getOneStudent: async (id) => {
     try {
-      const res = await axios.get("/student/getOneStudent/" + id);
+      const res = await axios.get(
+        "https://crm-backend-xiqj.onrender.com/api/student/getOneStudent/" + id
+      );
       console.log(res);
 
       if (res?.data?.student) {
@@ -61,7 +69,10 @@ const studentCrm = create((set, get) => ({
     console.log(user);
 
     try {
-      const res = await axios.post("/student/" + user._id, formData);
+      const res = await axios.post(
+        "https://crm-backend-xiqj.onrender.com/api/student/" + user._id,
+        formData
+      );
 
       console.log(res);
 
@@ -85,7 +96,9 @@ const studentCrm = create((set, get) => ({
   deleteStudent: async (studentId) => {
     loading: true;
     try {
-      const res = await axios.delete("/student/" + studentId);
+      const res = await axios.delete(
+        "https://crm-backend-xiqj.onrender.com/api/student/" + studentId
+      );
       set((prevStudents) => ({
         students: prevStudents.students.filter(
           (student) => student._id !== studentId
@@ -102,7 +115,10 @@ const studentCrm = create((set, get) => ({
   updateStudent: async (studentId, newData) => {
     loading: true;
     try {
-      const res = await axios.put("/student/" + studentId, newData);
+      const res = await axios.put(
+        "https://crm-backend-xiqj.onrender.com/api/student/" + studentId,
+        newData
+      );
       console.log(res);
 
       set({ loading: false, students: res.data });
@@ -118,7 +134,10 @@ const studentCrm = create((set, get) => ({
   loginStudent: async (login, password) => {
     set({ loading: true });
     try {
-      const res = await axios.post("/student/", { login, password });
+      const res = await axios.post(
+        "https://crm-backend-xiqj.onrender.com/api/student/",
+        { login, password }
+      );
 
       if (res.data?._id) {
         set({ currentStudent: res.data, loading: false });
@@ -141,7 +160,9 @@ const studentCrm = create((set, get) => ({
     set({ loading: true });
 
     try {
-      const res = await axios.post("/student/logoutStudent/log");
+      const res = await axios.post(
+        "https://crm-backend-xiqj.onrender.com/api/student/logoutStudent/log"
+      );
       console.log(res);
 
       set({ loading: false, currentStudent: null });

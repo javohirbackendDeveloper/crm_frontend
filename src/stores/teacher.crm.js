@@ -15,7 +15,10 @@ export const teacherCrm = create((set, get) => ({
   // GET TEACHER GROUPS
   getTeacherGroups: async (teacherId) => {
     try {
-      const res = await axios.get("/group/getTeacherGroups/" + teacherId);
+      const res = await axios.get(
+        "https://crm-backend-xiqj.onrender.com/api/group/getTeacherGroups/" +
+          teacherId
+      );
 
       set({ teacherGroups: res?.data?.groups });
     } catch (error) {
@@ -27,7 +30,10 @@ export const teacherCrm = create((set, get) => ({
 
   getTeacherStudents: async (teacher_id) => {
     try {
-      const res = await axios.get("/teacher/getTeacherStudents/" + teacher_id);
+      const res = await axios.get(
+        "https://crm-backend-xiqj.onrender.com/api/teacher/getTeacherStudents/" +
+          teacher_id
+      );
       set({ teacherStudents: res.data.students, groups: res.data.groups });
       console.log(res);
 
@@ -42,7 +48,10 @@ export const teacherCrm = create((set, get) => ({
 
   getOneTeacher: async (teacher_id) => {
     try {
-      const res = await axios.get("/teacher/getOneTeacher/" + teacher_id);
+      const res = await axios.get(
+        "https://crm-backend-xiqj.onrender.com/api/teacher/getOneTeacher/" +
+          teacher_id
+      );
 
       return res.data;
     } catch (error) {
@@ -61,7 +70,9 @@ export const teacherCrm = create((set, get) => ({
         return;
       }
 
-      const res = await axios.get(`/teacher?center_id=${user._id}`);
+      const res = await axios.get(
+        `https://crm-backend-xiqj.onrender.com/api/teacher?center_id=${user._id}`
+      );
 
       set({ teachers: res.data.teachers, loading: false });
     } catch (error) {
@@ -105,7 +116,9 @@ export const teacherCrm = create((set, get) => ({
   deleteTeacher: async (teacherId) => {
     set({ loading: true });
     try {
-      const res = await axios.delete("/teacher/" + teacherId);
+      const res = await axios.delete(
+        "https://crm-backend-xiqj.onrender.com/api/teacher/" + teacherId
+      );
       set((prevTeachers) => ({
         teachers: prevTeachers.teachers.filter(
           (teacher) => teacher._id !== teacherId
@@ -123,7 +136,10 @@ export const teacherCrm = create((set, get) => ({
   updateTeacher: async (teacherId, newData) => {
     set({ loading: true });
     try {
-      const res = await axios.put("/teacher/" + teacherId, newData);
+      const res = await axios.put(
+        "https://crm-backend-xiqj.onrender.com/api/teacher/" + teacherId,
+        newData
+      );
 
       set((state) => {
         const updateTeachers = state.teachers.map((teacher) =>
@@ -142,10 +158,13 @@ export const teacherCrm = create((set, get) => ({
 
   teacherLogin: async (login, password) => {
     try {
-      const res = await axios.post("/teacher/teacherLogin", {
-        login,
-        password,
-      });
+      const res = await axios.post(
+        "https://crm-backend-xiqj.onrender.com/api/teacher/teacherLogin",
+        {
+          login,
+          password,
+        }
+      );
       if (res.data?._id) {
         set({ currentTeacher: res.data });
         window.localStorage.setItem("isLoggedInTeacher", true);
@@ -167,7 +186,9 @@ export const teacherCrm = create((set, get) => ({
 
   logoutTeacher: async () => {
     try {
-      const res = await axios.post("/teacher/logoutTeacher");
+      const res = await axios.post(
+        "https://crm-backend-xiqj.onrender.com/api/teacher/logoutTeacher"
+      );
       set({ currentTeacher: null });
       window.localStorage.removeItem("isLoggedInTeacher");
       window.localStorage.removeItem("currentTeacher");

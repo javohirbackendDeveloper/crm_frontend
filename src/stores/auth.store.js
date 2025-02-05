@@ -17,11 +17,14 @@ const authStore = create((set, get) => ({
       return toast.error("Ikkala parol ham bir xil bo'lishi kerak");
     }
     try {
-      const res = await axios.post(`/auth/register`, {
-        email,
-        password,
-        username,
-      });
+      const res = await axios.post(
+        `https://crm-backend-xiqj.onrender.com/api/auth/register`,
+        {
+          email,
+          password,
+          username,
+        }
+      );
 
       if (res.status === 201) {
         window.localStorage.setItem("isLoggedInUser", true);
@@ -78,7 +81,9 @@ const authStore = create((set, get) => ({
 
   logout: async () => {
     try {
-      const res = await axios.post(`/auth/logout`);
+      const res = await axios.post(
+        `https://crm-backend-xiqj.onrender.com/api/auth/logout`
+      );
 
       set({ user: null });
       window.localStorage.removeItem("isLoggedInUser");
@@ -107,7 +112,10 @@ const authStore = create((set, get) => ({
 
   getStatistics: async (center_id) => {
     try {
-      const res = await axios.get(`/auth/getStatistics/` + center_id);
+      const res = await axios.get(
+        `https://crm-backend-xiqj.onrender.com/api/auth/getStatistics/` +
+          center_id
+      );
 
       set({ statistic: res.data });
     } catch (error) {

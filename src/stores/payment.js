@@ -1,13 +1,17 @@
 import toast from "react-hot-toast";
 import { create } from "zustand";
-import axios from "../../lib/axios";
+import axios from "axios";
 
 const paymentCrm = create((set, get) => ({
   payments: [],
 
   addPayment: async (center_id, data) => {
     try {
-      const res = await axios.post("/payment/addPayment/" + center_id, data);
+      const res = await axios.post(
+        "https://crm-backend-xiqj.onrender.com/api/payment/addPayment/" +
+          center_id,
+        data
+      );
       console.log(data);
 
       if (res.data?.payment) {
@@ -25,7 +29,9 @@ const paymentCrm = create((set, get) => ({
 
   getStudentPayments: async (student_id) => {
     try {
-      const res = await axios("/payment/" + student_id);
+      const res = await axios(
+        "https://crm-backend-xiqj.onrender.com/api/payment/" + student_id
+      );
       console.log(res);
 
       set({ payments: [...res.data] });
