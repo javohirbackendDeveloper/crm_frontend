@@ -1,6 +1,7 @@
 import toast from "react-hot-toast";
 import { create } from "zustand";
-import axios from "../../lib/axios";
+import axios from "axios";
+// import axios from "../../lib/axios";
 
 const authStore = create((set, get) => ({
   user: JSON.parse(window.localStorage.getItem("user")) || null,
@@ -44,10 +45,13 @@ const authStore = create((set, get) => ({
     console.log(data);
 
     try {
-      const res = await axios.post(`/auth/login`, {
-        email: data.email,
-        password: data.password,
-      });
+      const res = await axios.post(
+        `https://crm-backend-xiqj.onrender.com/api/auth/login`,
+        {
+          email: data.email,
+          password: data.password,
+        }
+      );
       console.log(res);
 
       if (res.data?.foundedUser) {

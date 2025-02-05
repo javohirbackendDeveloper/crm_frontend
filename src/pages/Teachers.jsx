@@ -43,15 +43,20 @@ function Teachers() {
 
   const indexOfLastTeacher = currentPage * teachersPerPage;
   const indexOfFirstTeacher = indexOfLastTeacher - teachersPerPage;
-  const currentTeachers = teachers.slice(
-    indexOfFirstTeacher,
-    indexOfLastTeacher
-  );
+  const currentTeachers =
+    (teachers &&
+      Array.isArray(teachers) &&
+      teachers.slice(indexOfFirstTeacher, indexOfLastTeacher)) ||
+    [];
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(teachers.length / teachersPerPage); i++) {
+  for (
+    let i = 1;
+    i <= Math.ceil(currentTeachers.length / teachersPerPage);
+    i++
+  ) {
     pageNumbers.push(i);
   }
 

@@ -1,6 +1,7 @@
 import toast from "react-hot-toast";
 import { create } from "zustand";
-import axios from "../../lib/axios";
+// import axios from "../../lib/axios";
+import axios from "axios";
 
 export const teacherCrm = create((set, get) => ({
   teachers: [],
@@ -82,9 +83,11 @@ export const teacherCrm = create((set, get) => ({
       }
 
       const res = await axios.post(
-        `http://localhost:4000/api/teacher?center_id=${user._id}`,
+        `https://crm-backend-xiqj.onrender.com/api/teacher?center_id=${user._id}`,
         teacherData
       );
+
+      console.log(res);
 
       if (res.data.message !== "This login already exists") {
         toast.success(res.data.message);
