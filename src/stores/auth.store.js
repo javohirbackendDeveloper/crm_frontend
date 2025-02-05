@@ -18,7 +18,7 @@ const authStore = create((set, get) => ({
     }
     try {
       const res = await axios.post(
-        `https://crm-backend-xiqj.onrender.com/api/auth/register`,
+        `https://crm-backend-1-c8se.onrender.com/api/auth/register`,
         {
           email,
           password,
@@ -49,7 +49,7 @@ const authStore = create((set, get) => ({
 
     try {
       const res = await axios.post(
-        `https://crm-backend-xiqj.onrender.com/api/auth/login`,
+        `https://crm-backend-1-c8se.onrender.com/api/auth/login`,
         {
           email: data.email,
           password: data.password,
@@ -86,7 +86,7 @@ const authStore = create((set, get) => ({
   logout: async () => {
     try {
       const res = await axios.post(
-        `https://crm-backend-xiqj.onrender.com/api/auth/logout`
+        `https://crm-backend-1-c8se.onrender.com/api/auth/logout`
       );
 
       set({ user: null });
@@ -117,7 +117,7 @@ const authStore = create((set, get) => ({
   getStatistics: async (center_id) => {
     try {
       const res = await axios.get(
-        `https://crm-backend-xiqj.onrender.com/api/auth/getStatistics/` +
+        `https://crm-backend-1-c8se.onrender.com/api/auth/getStatistics/` +
           center_id
       );
 

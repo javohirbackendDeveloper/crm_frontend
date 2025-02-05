@@ -16,7 +16,7 @@ export const teacherCrm = create((set, get) => ({
   getTeacherGroups: async (teacherId) => {
     try {
       const res = await axios.get(
-        "https://crm-backend-xiqj.onrender.com/api/group/getTeacherGroups/" +
+        "https://crm-backend-1-c8se.onrender.com/api/group/getTeacherGroups/" +
           teacherId
       );
 
@@ -31,7 +31,7 @@ export const teacherCrm = create((set, get) => ({
   getTeacherStudents: async (teacher_id) => {
     try {
       const res = await axios.get(
-        "https://crm-backend-xiqj.onrender.com/api/teacher/getTeacherStudents/" +
+        "https://crm-backend-1-c8se.onrender.com/api/teacher/getTeacherStudents/" +
           teacher_id
       );
       set({ teacherStudents: res.data.students, groups: res.data.groups });
@@ -49,7 +49,7 @@ export const teacherCrm = create((set, get) => ({
   getOneTeacher: async (teacher_id) => {
     try {
       const res = await axios.get(
-        "https://crm-backend-xiqj.onrender.com/api/teacher/getOneTeacher/" +
+        "https://crm-backend-1-c8se.onrender.com/api/teacher/getOneTeacher/" +
           teacher_id
       );
 
@@ -71,7 +71,7 @@ export const teacherCrm = create((set, get) => ({
       }
 
       const res = await axios.get(
-        `https://crm-backend-xiqj.onrender.com/api/teacher?center_id=${user._id}`
+        `https://crm-backend-1-c8se.onrender.com/api/teacher?center_id=${user._id}`
       );
 
       set({ teachers: res.data.teachers, loading: false });
@@ -94,7 +94,7 @@ export const teacherCrm = create((set, get) => ({
       }
 
       const res = await axios.post(
-        `https://crm-backend-xiqj.onrender.com/api/teacher?center_id=${user._id}`,
+        `https://crm-backend-1-c8se.onrender.com/api/teacher?center_id=${user._id}`,
         teacherData
       );
 
@@ -117,7 +117,7 @@ export const teacherCrm = create((set, get) => ({
     set({ loading: true });
     try {
       const res = await axios.delete(
-        "https://crm-backend-xiqj.onrender.com/api/teacher/" + teacherId
+        "https://crm-backend-1-c8se.onrender.com/api/teacher/" + teacherId
       );
       set((prevTeachers) => ({
         teachers: prevTeachers.teachers.filter(
@@ -137,7 +137,7 @@ export const teacherCrm = create((set, get) => ({
     set({ loading: true });
     try {
       const res = await axios.put(
-        "https://crm-backend-xiqj.onrender.com/api/teacher/" + teacherId,
+        "https://crm-backend-1-c8se.onrender.com/api/teacher/" + teacherId,
         newData
       );
 
@@ -159,7 +159,7 @@ export const teacherCrm = create((set, get) => ({
   teacherLogin: async (login, password) => {
     try {
       const res = await axios.post(
-        "https://crm-backend-xiqj.onrender.com/api/teacher/teacherLogin",
+        "https://crm-backend-1-c8se.onrender.com/api/teacher/teacherLogin",
         {
           login,
           password,
@@ -187,7 +187,7 @@ export const teacherCrm = create((set, get) => ({
   logoutTeacher: async () => {
     try {
       const res = await axios.post(
-        "https://crm-backend-xiqj.onrender.com/api/teacher/logoutTeacher"
+        "https://crm-backend-1-c8se.onrender.com/api/teacher/logoutTeacher"
       );
       set({ currentTeacher: null });
       window.localStorage.removeItem("isLoggedInTeacher");

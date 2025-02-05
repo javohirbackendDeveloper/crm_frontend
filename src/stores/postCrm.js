@@ -9,7 +9,7 @@ const postCrm = create((set, get) => ({
     console.log({ postData, center_id });
     try {
       const res = await axios.post(
-        "https://crm-backend-xiqj.onrender.com/api/post/addPost/" + center_id,
+        "https://crm-backend-1-c8se.onrender.com/api/post/addPost/" + center_id,
         postData
       );
       console.log(res);
@@ -24,7 +24,7 @@ const postCrm = create((set, get) => ({
   getPosts: async (center_id) => {
     try {
       const res = await axios.get(
-        "https://crm-backend-xiqj.onrender.com/api/post/" + center_id
+        "https://crm-backend-1-c8se.onrender.com/api/post/" + center_id
       );
 
       set({ posts: res.data.posts });
@@ -37,7 +37,7 @@ const postCrm = create((set, get) => ({
   deletePost: async (post_id) => {
     try {
       const res = await axios.delete(
-        "https://crm-backend-xiqj.onrender.com/api/post/" + post_id
+        "https://crm-backend-1-c8se.onrender.com/api/post/" + post_id
       );
       set((prevPosts) => ({
         posts: prevPosts.posts.filter((post) => post?._id !== post_id),
@@ -52,7 +52,7 @@ const postCrm = create((set, get) => ({
   addComment: async (post_id, user_id, comment) => {
     try {
       const res = await axios.post(
-        "https://crm-backend-xiqj.onrender.com/api/post/addComent",
+        "https://crm-backend-1-c8se.onrender.com/api/post/addComent",
         {
           post_id,
           user_id,
@@ -75,7 +75,7 @@ const postCrm = create((set, get) => ({
 
     try {
       const res = await axios.post(
-        "https://crm-backend-xiqj.onrender.com/api/post/addLike",
+        "https://crm-backend-1-c8se.onrender.com/api/post/addLike",
         {
           post_id,
           user_id,
@@ -93,7 +93,7 @@ const postCrm = create((set, get) => ({
   getGlobalPosts: async () => {
     try {
       const res = await axios.get(
-        "https://crm-backend-xiqj.onrender.com/api/post/"
+        "https://crm-backend-1-c8se.onrender.com/api/post/"
       );
 
       set({ globalPosts: res.data.sortedPosts });

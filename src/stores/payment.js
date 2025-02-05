@@ -8,7 +8,7 @@ const paymentCrm = create((set, get) => ({
   addPayment: async (center_id, data) => {
     try {
       const res = await axios.post(
-        "https://crm-backend-xiqj.onrender.com/api/payment/addPayment/" +
+        "https://crm-backend-1-c8se.onrender.com/api/payment/addPayment/" +
           center_id,
         data
       );
@@ -30,7 +30,7 @@ const paymentCrm = create((set, get) => ({
   getStudentPayments: async (student_id) => {
     try {
       const res = await axios(
-        "https://crm-backend-xiqj.onrender.com/api/payment/" + student_id
+        "https://crm-backend-1-c8se.onrender.com/api/payment/" + student_id
       );
       console.log(res);
 

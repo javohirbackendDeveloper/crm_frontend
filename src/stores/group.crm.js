@@ -13,7 +13,7 @@ export const groupCrm = create((set) => ({
   getStudentGroup: async (group_name) => {
     try {
       const res = await axios.get(
-        "https://crm-backend-xiqj.onrender.com/api/group/getOneGroupByName/" +
+        "https://crm-backend-1-c8se.onrender.com/api/group/getOneGroupByName/" +
           group_name
       );
 
@@ -29,7 +29,7 @@ export const groupCrm = create((set) => ({
   getGroupTeacher: async (teacherId) => {
     try {
       const res = await axios.get(
-        "https://crm-backend-xiqj.onrender.com/api/group/getGroupTeacher/" +
+        "https://crm-backend-1-c8se.onrender.com/api/group/getGroupTeacher/" +
           teacherId
       );
 
@@ -45,7 +45,7 @@ export const groupCrm = create((set) => ({
   getOneGroup: async (id) => {
     try {
       const res = await axios.get(
-        "https://crm-backend-xiqj.onrender.com/api/group/getOneGroup/" + id
+        "https://crm-backend-1-c8se.onrender.com/api/group/getOneGroup/" + id
       );
 
       if (res?.data.group) {
@@ -64,7 +64,7 @@ export const groupCrm = create((set) => ({
   getAllStudents: async (group_id) => {
     try {
       const res = await axios.get(
-        "https://crm-backend-xiqj.onrender.com/api/group/getAllStudents/" +
+        "https://crm-backend-1-c8se.onrender.com/api/group/getAllStudents/" +
           group_id
       );
       console.log(res);
@@ -82,7 +82,7 @@ export const groupCrm = create((set) => ({
 
     try {
       const res = await axios.get(
-        `https://crm-backend-xiqj.onrender.com/api/group?center_id=${userId}`
+        `https://crm-backend-1-c8se.onrender.com/api/group?center_id=${userId}`
       );
 
       if (res.data && Array.isArray(res.data.groups)) {
@@ -108,7 +108,7 @@ export const groupCrm = create((set) => ({
       }
 
       const res = await axios.post(
-        `https://crm-backend-xiqj.onrender.com/api/group?center_id=${user._id}`,
+        `https://crm-backend-1-c8se.onrender.com/api/group?center_id=${user._id}`,
         formData
       );
 
@@ -134,7 +134,7 @@ export const groupCrm = create((set) => ({
     set({ loading: true });
     try {
       const res = await axios.delete(
-        "https://crm-backend-xiqj.onrender.com/api/group/" + groupId
+        "https://crm-backend-1-c8se.onrender.com/api/group/" + groupId
       );
       set((prevGroups) => ({
         groups: prevGroups.groups.filter((group) => group._id !== groupId),
@@ -152,7 +152,7 @@ export const groupCrm = create((set) => ({
     loading: true;
     try {
       const res = await axios.put(
-        "https://crm-backend-xiqj.onrender.com/api/group/" + groupId,
+        "https://crm-backend-1-c8se.onrender.com/api/group/" + groupId,
         newData
       );
       console.log(newData);

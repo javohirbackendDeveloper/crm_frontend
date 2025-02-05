@@ -14,7 +14,7 @@ const studentCrm = create((set, get) => ({
   addGrade: async (center_id, data) => {
     try {
       const res = await axios.post(
-        "https://crm-backend-xiqj.onrender.com/api/student/addGrade/" +
+        "https://crm-backend-1-c8se.onrender.com/api/student/addGrade/" +
           center_id,
         data
       );
@@ -33,7 +33,7 @@ const studentCrm = create((set, get) => ({
   getStudents: async (user) => {
     try {
       const res = await axios.get(
-        "https://crm-backend-xiqj.onrender.com/api/student/" + user?._id
+        "https://crm-backend-1-c8se.onrender.com/api/student/" + user?._id
       );
 
       set({ students: res.data?.students });
@@ -48,7 +48,8 @@ const studentCrm = create((set, get) => ({
   getOneStudent: async (id) => {
     try {
       const res = await axios.get(
-        "https://crm-backend-xiqj.onrender.com/api/student/getOneStudent/" + id
+        "https://crm-backend-1-c8se.onrender.com/api/student/getOneStudent/" +
+          id
       );
       console.log(res);
 
@@ -70,7 +71,7 @@ const studentCrm = create((set, get) => ({
 
     try {
       const res = await axios.post(
-        "https://crm-backend-xiqj.onrender.com/api/student/" + user._id,
+        "https://crm-backend-1-c8se.onrender.com/api/student/" + user._id,
         formData
       );
 
@@ -97,7 +98,7 @@ const studentCrm = create((set, get) => ({
     loading: true;
     try {
       const res = await axios.delete(
-        "https://crm-backend-xiqj.onrender.com/api/student/" + studentId
+        "https://crm-backend-1-c8se.onrender.com/api/student/" + studentId
       );
       set((prevStudents) => ({
         students: prevStudents.students.filter(
@@ -116,7 +117,7 @@ const studentCrm = create((set, get) => ({
     loading: true;
     try {
       const res = await axios.put(
-        "https://crm-backend-xiqj.onrender.com/api/student/" + studentId,
+        "https://crm-backend-1-c8se.onrender.com/api/student/" + studentId,
         newData
       );
       console.log(res);
@@ -135,7 +136,7 @@ const studentCrm = create((set, get) => ({
     set({ loading: true });
     try {
       const res = await axios.post(
-        "https://crm-backend-xiqj.onrender.com/api/student/",
+        "https://crm-backend-1-c8se.onrender.com/api/student/",
         { login, password }
       );
 
@@ -161,7 +162,7 @@ const studentCrm = create((set, get) => ({
 
     try {
       const res = await axios.post(
-        "https://crm-backend-xiqj.onrender.com/api/student/logoutStudent/log"
+        "https://crm-backend-1-c8se.onrender.com/api/student/logoutStudent/log"
       );
       console.log(res);
 

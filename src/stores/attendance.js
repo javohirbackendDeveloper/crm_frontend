@@ -10,7 +10,7 @@ const attendanceCrm = create((set, get) => ({
 
     try {
       const res = await axios.post(
-        "https://crm-backend-xiqj.onrender.com/api/attendance/saveAttendance",
+        "https://crm-backend-1-c8se.onrender.com/api/attendance/saveAttendance",
         {
           student_id,
           group_id,
@@ -37,7 +37,7 @@ const attendanceCrm = create((set, get) => ({
   getAttendanceForGroup: async (group_id) => {
     try {
       const res = await axios.get(
-        `https://crm-backend-xiqj.onrender.com/api/attendance/getAttendanceForGroup/${group_id}`
+        `https://crm-backend-1-c8se.onrender.com/api/attendance/getAttendanceForGroup/${group_id}`
       );
       const attendanceData = res.data?.attendance || {};
 
