@@ -53,6 +53,10 @@ const authStore = create((set, get) => ({
         {
           email: data.email,
           password: data.password,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+          timeout: 5000,
         }
       );
       console.log(res);
