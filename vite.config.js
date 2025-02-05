@@ -14,6 +14,9 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: "build", // 🔥 Build natijasini "build" papkasiga chiqarish
+    outDir: "build",
+    rollupOptions: {
+      input: "./public/index.html",
+    },
   },
 });

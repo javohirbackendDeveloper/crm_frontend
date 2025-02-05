@@ -69,7 +69,7 @@ const authStore = create((set, get) => ({
           "user",
           JSON.stringify(res.data?.foundedUser)
         );
-        // window.location.reload();
+        window.location.reload();
         set({ user: res.data?.foundedUser, loading: false });
       } else {
         toast.error(res.data.error);
