@@ -27,8 +27,8 @@ import GetOneStudent from "./pages/GetOneStudent";
 import GetOneGroup from "./pages/GetOneGroup";
 import GetOneTeacher from "./pages/GetOneTeacher";
 import Attendance from "./pages/Attendance";
-import Payment from "./pages/Payment";
-import Market from "./pages/Market";
+// import Payment from "./pages/Payment";
+// import Market from "./pages/Market";
 import GetOneProduct from "./pages/GetOneProduct";
 import Orders from "./pages/Orders";
 import Profile from "./pages/Profile";
@@ -130,8 +130,8 @@ function App() {
               path="/teacher/getOneTeacher/:teacher_id"
               element={<GetOneTeacher />}
             />
-            <Route path="/payment" element={<Payment />} />
-            <Route path="/market" element={<Market />} />
+            {/* <Route path="/payment" element={<Payment />} />
+            <Route path="/market" element={<Market />} /> */}
             <Route
               path="/getOneProduct/:product_id"
               element={<GetOneProduct />}
